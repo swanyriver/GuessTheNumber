@@ -20,12 +20,10 @@ using namespace std;
 
 int main(){
 
-	string feelings;
-	cout << "nice to meet you sir!"
-	     << "how are you today?";
-	cin >> feelings;
-	cout << endl;
-	cout << "sorry to hear that you are " << feelings << endl;
-	return 0;
-
+	const int MAX_GUESSES = 6;
+    const int MAX_RANGE = 2*2*2*2*2*2;
+    
+    cout << MAX_RANGE;
+    
+    return 0;
 }
