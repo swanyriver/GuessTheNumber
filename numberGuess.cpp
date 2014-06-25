@@ -40,6 +40,7 @@ int main(){
     cout << "GIVE ME A NUMBER";
     cout << "Between " << rangeBegining << " and " << rangeEnd << endl;
     cin >> secretNumber;
+    //CHECK THAT IS INSIDE RANGE
     
     do{
         
@@ -48,6 +49,7 @@ int main(){
              << rangeEnd << endl;
         ///GUESS SECRET NUMBER
         cin >> usersGuess;
+        //CHECK THAT IT IS INSIDE RANGE
         
         if(usersGuess==secretNumber){
             guessCorrect=true;
