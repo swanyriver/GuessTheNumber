@@ -21,7 +21,7 @@ using namespace std;
 int main(){
 
     //CONSTANT CONTROL VARIABLES
-	const int MAX_GUESSES = 2;
+	const int MAX_GUESSES = 6;
     const int MAX_RANGE = 2*2*2*2*2*2;
     
     const int LINE_WIDTH = 80;
@@ -69,7 +69,11 @@ int main(){
                 //OUTPUT GUESS HINTS
                 if(guessCount<MAX_GUESSES){
                     if (usersGuess>secretNumber) {
-                        //cout
+                        cout << "That Guesss was Too High";
+                        rangeEnd = usersGuess - 1;
+                    } else if ( usersGuess<secretNumber) {
+                        cout << "That Guess was Too Low";
+                        rangeBegining = usersGuess + 1;
                     }
                 }
                 
