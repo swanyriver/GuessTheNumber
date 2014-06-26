@@ -47,7 +47,12 @@ int main(){
         cout << "GIVE ME A NUMBER";
         cout << "Between " << rangeBegining << " and " << rangeEnd << endl;
         cin >> secretNumber;
-        //CHECK THAT IS INSIDE RANGE
+        
+        while (secretNumber<1||secretNumber>MAX_RANGE) {
+            cout << "please keep it between 1 and " << MAX_RANGE;
+            cin >> secretNumber;
+        }
+        
         //HIDE FROM OTHER USER
         
         do{
@@ -57,7 +62,12 @@ int main(){
                  << rangeEnd << endl;
             ///GUESS SECRET NUMBER
             cin >> usersGuess;
+            
             //CHECK THAT IT IS INSIDE RANGE
+            while (usersGuess<rangeBegining||usersGuess>rangeEnd) {
+                cout << "please keep it between" << rangeBegining << " and " << rangeEnd;
+                cin >> usersGuess;
+            }
             
             
             //CHECK GUESS
