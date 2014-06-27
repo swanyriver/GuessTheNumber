@@ -1,7 +1,7 @@
 /***********************************************************
 * Author: Brandon Swanson
 * Date Created: 06-24-2014
-* Last Modification Date: 06-24-2014
+* Last Modification Date: 06-27-2014
 * Filename: numberGuess.cpp
 *
 * Overview: Two users compete, one enters a secret number and
