@@ -1,8 +1,18 @@
-/**********************
- * Hello World
- * Brandon Swanson
- * June 23rd 2014
- * *******************/
+/***********************************************************
+* Author: Brandon Swanson
+* Date Created: 06-23-2014
+* Last Modification Date: 06-23-2014
+* Filename:HelloAndEcho.cpp
+*
+* Overview:Says hello to me, asks me my feelings, tells me my feelings
+*
+* Input: My Feelings, How Many Days
+*
+* Output:It agrees with my feelings and comiserates
+*
+ ***********************************************************/
+
+
 
 #include <iostream>
 using namespace std;
