@@ -103,9 +103,18 @@ int main(){
         //CHECK FOR PLAY AGAIN
         cout << endl << "Play Again? (y/n):";
         cin >> playAgain;
+        
+        while ( !(playAgain.compare("y")==0 || playAgain.compare("n")==0) ) {
+            cout << endl << "I'm sorry,  I didnt understand that, enter \"y\" for yes "
+                 << "and \"n\" for no";
+            cout << endl << "Play Again? (y/n):";
+            cin >> playAgain;
+        }
        
         
     }while(playAgain.compare("n")!=0);
+    
+    cout << "Thank You For Playing!!!" << endl;
         
     return 0;
 }
