@@ -16,56 +16,81 @@
 ***********************************************************/
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main(){
 
     //CONSTANT CONTROL VARIABLES
-	const int MAX_GUESSES = 6;
-    const int MAX_RANGE = 2*2*2*2*2*2;
+	const int MAX_GUESSES = 5;
+    const int MAX_RANGE = 100;
+    const int EQUAL_STRING = 0; //as defined by string.compare()
     
-    const int LINE_WIDTH = 80;
+    
     
     //DATA VARIABLES
     int secretNumber;
     int usersGuess;
     int guessCount=0;
     bool guessCorrect=false;
-    
     int rangeRemaining;
     int rangeBegining = 1;
     int rangeEnd = MAX_RANGE;
-    
     string playAgain;
+    string knowTheNumber;
+    
+    
+    //FOR CLEARING THE SCREEN
+    string clearScreen = "";
+    for (int i=0; i<50; i++) {
+        clearScreen=clearScreen + "\n";
+    }
 
     
     ///INTRO GAME RULES
-    cout << "Welcome to the Game ";
+    cout << "Welcome to the Number Guess Game "
+         << endl << "Player 1 will pick a Secret Number"
+         << endl << "Then Player 2 will have Five Guesses to deterimine the Secret Number"
+         << endl << "I will give you some helpfull hints,  Good Luck";
     
-    do{
+    
+    do{ //PLAY GAME
+        
+        //re-initialize variables after previous round
+        guessCount = 0;
+        rangeBegining = 1;
+        rangeEnd = MAX_RANGE;
+        guessCorrect=false;
+        
         ///GET SECRET NUMBER
-        cout << "GIVE ME A NUMBER";
-        cout << "Between " << rangeBegining << " and " << rangeEnd << endl;
+        cout << endl << "Player 1 please enter a number";
+        cout << " from " << rangeBegining << " to " << rangeEnd << endl;
         cin >> secretNumber;
         
-        while (secretNumber<1||secretNumber>MAX_RANGE) {
-            cout << "please keep it between 1 and " << MAX_RANGE;
+        while (secretNumber<rangeBegining||secretNumber>rangeEnd) {
+            cout << "please keep it between " << rangeBegining << " and " << rangeEnd;
+            cout << "\n\nPlayer 1 please enter a number";
+            cout << " from " << rangeBegining << " to " << rangeEnd << endl;
             cin >> secretNumber;
         }
         
         //HIDE FROM OTHER USER
+        cout << clearScreen << endl;
         
-        do{
+        
+        do{ //PLAYER TWO GUESSES
             
-            cout << "PLAYER TWO, WHATS THE NUMBER?";
-            cout << endl << "Between " << rangeBegining << " and "
-                 << rangeEnd << endl;
+            cout << endl << endl << "The number is greater than " << rangeBegining-1
+                 << " and less than " << rangeEnd+1;
+            cout << endl <<"Player 2 what do you think the number is?";
+            
             ///GUESS SECRET NUMBER
             cin >> usersGuess;
             
             //CHECK THAT IT IS INSIDE RANGE
             while (usersGuess<rangeBegining||usersGuess>rangeEnd) {
-                cout << "please keep it between" << rangeBegining << " and " << rangeEnd;
+                cout << "please keep it between " << rangeBegining << " and " << rangeEnd;
+                cout << endl <<"Player 2 what do you think the number is?";
                 cin >> usersGuess;
             }
             
@@ -96,23 +121,44 @@ int main(){
         if(guessCorrect){
             cout << "Congatulations, You Correctly Guessed the Secret Number,  YOU WIN!!";
         }else{
-            cout << "Oh no,  you have run out of guesses without correctly guessing the secret number, YOU LOOSE!";
-            //cout << endl << "Do you want to know the secret number"
+            cout << "Oh no,  you have run out of guesses "
+                 << "without correctly guessing the secret number"
+                 << endl << "YOU LOOSE!";
+            
+            cout << endl << endl << "Do you want to know the secret number? (y/n):";
+            cin >> knowTheNumber;
+            
+            //CHECK RESPONSE IS y OR n
+            while ( !(knowTheNumber.compare("y")==EQUAL_STRING
+                   || knowTheNumber.compare("n")==EQUAL_STRING) ) {
+                cout << endl << "I'm sorry,  I didnt understand that, enter \"y\" for yes "
+                << "and \"n\" for no";
+                cout << endl << "Do you want to know the secret number? (y/n):";
+                cin >> knowTheNumber;
+            }
+            
+            if (knowTheNumber.compare("y")==EQUAL_STRING) {
+                cout << "The Secret Number was " << secretNumber;
+            }
+
         }
         
         //CHECK FOR PLAY AGAIN
         cout << endl << "Play Again? (y/n):";
         cin >> playAgain;
         
-        while ( !(playAgain.compare("y")==0 || playAgain.compare("n")==0) ) {
+        //CHECK RESPONSE IS y OR n
+        while ( !(playAgain.compare("y")==EQUAL_STRING
+               || playAgain.compare("n")==EQUAL_STRING) ) {
             cout << endl << "I'm sorry,  I didnt understand that, enter \"y\" for yes "
                  << "and \"n\" for no";
             cout << endl << "Play Again? (y/n):";
             cin >> playAgain;
         }
-       
         
-    }while(playAgain.compare("n")!=0);
+        cout << clearScreen << endl;
+        
+    }while(playAgain.compare("y")==EQUAL_STRING);
     
     cout << "Thank You For Playing!!!" << endl;
         
