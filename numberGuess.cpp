@@ -117,7 +117,7 @@ int main(){
                 
                 if (guessDistance < closestToSecretNumber) {
                     closestGuess = usersGuess;
-                    closestToSecretNumber = abs( usersGuess - secretNumber );
+                    closestToSecretNumber = guessDistance;
                 }
 
                 
