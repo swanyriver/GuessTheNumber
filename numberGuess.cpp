@@ -38,7 +38,8 @@ int main(){
     int rangeBegining = 1;
     int rangeEnd = MAX_RANGE;
     
-    int distanceToSecretNumber = MAX_RANGE;
+    int closestToSecretNumber = MAX_RANGE;
+    int guessDistance;
     int closestGuess;
     
     string playAgain;
@@ -108,12 +109,20 @@ int main(){
                 guessCount++;
                 
                 //determine closest guess
-                if ( abs( usersGuess - secretNumber ) < distanceToSecretNumber) {
-                    closestGuess = usersGuess;
-                    distanceToSecretNumber = abs( usersGuess - secretNumber );
+                if (usersGuess > secretNumber) {
+                    guessDistance = usersGuess-secretNumber;
+                } else if (usersGuess < secretNumber) {
+                    guessDistance = secretNumber-usersGuess;
                 }
                 
-                //OUTPUT GUESS HINTS
+                if (guessDistance < closestToSecretNumber) {
+                    closestGuess = usersGuess;
+                    closestToSecretNumber = abs( usersGuess - secretNumber );
+                }
+
+                
+                
+                //OUTPUT GUESS HINTS  ///ADJUST RANGE
                 if(guessCount < MAX_GUESSES){
                     if (usersGuess > secretNumber) {
                         cout << "That Guesss was Too High";
