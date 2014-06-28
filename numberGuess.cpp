@@ -89,6 +89,7 @@ int main(){
             
             cout << endl << endl << "The number is greater than " << rangeBegining-1
                  << " and less than " << rangeEnd+1;
+            cout << endl << " you have " << MAX_GUESSES-guessCount << " guesses remaining";
             cout << endl <<"Player 2 what do you think the number is?";
             
             ///GUESS SECRET NUMBER
