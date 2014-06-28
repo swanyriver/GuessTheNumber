@@ -33,11 +33,17 @@ int main(){
     int usersGuess;
     int guessCount = 0;
     bool guessCorrect = false;
+    
     int rangeRemaining;
     int rangeBegining = 1;
     int rangeEnd = MAX_RANGE;
+    
+    int distanceToSecretNumber = MAX_RANGE;
+    int closestGuess;
+    
     string playAgain;
     string knowTheNumber;
+    
     
     
     //FOR CLEARING THE SCREEN
@@ -101,6 +107,12 @@ int main(){
             }else{
                 guessCount++;
                 
+                //determine closest guess
+                if ( abs( usersGuess - secretNumber ) < distanceToSecretNumber) {
+                    closestGuess = usersGuess;
+                    distanceToSecretNumber = abs( usersGuess - secretNumber );
+                }
+                
                 //OUTPUT GUESS HINTS
                 if(guessCount < MAX_GUESSES){
                     if (usersGuess > secretNumber) {
@@ -123,6 +135,7 @@ int main(){
         }else{
             cout << "Oh no,  you have run out of guesses "
                  << "without correctly guessing the secret number"
+                 << endl << "your closest guess was " << closestGuess
                  << endl << "YOU LOOSE!";
             
             cout << endl << endl << "Do you want to know the secret number? (y/n):";
